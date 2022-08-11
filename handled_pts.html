@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>YURTDIŞI KARGO</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link href="assets/plugins/select2/select2.min.css" rel="stylesheet" />
+    <link href="assets/plugins/datatable/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <!-- Include Required Prerequisites -->
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+
+
+    <!-- Include Date Range Picker -->
+    <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+
+
+    <script>
+
+        $(function() {
+            $('input[name="daterange1"]').daterangepicker({
+                timePicker: true,
+                timePickerIncrement: 3,
+                locale: {
+                    format: 'MM/DD/YYYY h:mm A'
+                }
+            });
+        });
+        $(function() {
+            $('input[name="birthday"]').daterangepicker({
+                singleDatePicker: true,
+                showDropdowns: true,
+                minYear: 1901,
+                maxYear: parseInt(moment().format('YYYY'),10)
+            }, function(start, end, label) {
+                var years = moment().diff(start, 'years');
+                alert("You are " + years + " years old!");
+            });
+        });
+
+
+    </script>
+
+</head>
+<body>
+<nav class="navbar navbar-expand-lg " style="background-color: #a80055">
+    <div class="container">
+        <a class="navbar-brand text-white" href="#">LOGO</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="nav nav-tabs  me-auto mb-4 mb-lg-5 " style="margin-left: 15% ;margin-top: 28px;">
+                <li class="nav-i " style="margin-left:0px">
+                    <a class="nav-link  text-white" aria-current="page" href="#">İHRACAT</a>
+                </li>
+                <li class="nav-i"style="margin-left: 20px">
+                    <a class="nav-link  text-white" href="#">FİLTRELE</a>
+                </li>
+                <li class="nav-item dropdown" style="margin-left: 20px">
+                    <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">PTS</a>
+                    <ul class="dropdown-menu active">
+                        <li><a class="dropdown-item " href="#">PTS İŞLE</a></li>
+                        <li><a class="dropdown-item" href="#">PTS GENEL İŞLE</a></li>
+                        <li><a class="dropdown-item" href="#">İŞLENDİ PTS</a></li>
+                        <li><a class="dropdown-item" href="#">PTS ÇIKIŞ</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown" style="margin-left: 20px">
+                    <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">DHL</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">DHL İŞLE</a></li>
+                        <li><a class="dropdown-item" href="#">DHL GENEL İŞLE</a></li>
+                        <li><a class="dropdown-item" href="#">İŞLENDİ DHL</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown" style="margin-left: 20px">
+                    <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">PTT</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">PTT İŞLE</a></li>
+                        <li><a class="dropdown-item" href="#">PTT GENEL İŞLE</a></li>
+                        <li><a class="dropdown-item" href="#">İŞLENDİ PTT</a></li>
+                        <li><a class="dropdown-item" href="#">PTT ÇIKIŞ</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown" style="margin-left: 20px">
+                    <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">UPS</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">UPS İŞLE</a></li>
+                        <li><a class="dropdown-item" href="#">UPS GENEL İŞLE</a></li>
+                        <li><a class="dropdown-item" href="#">İŞLENDİ UPS</a></li>
+                        <li><a class="dropdown-item" href="#">UPS ÇIKIŞ</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <form class="d-flex mb-1" role="search">
+                <input class="form-control me-3" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-secondary text-white" type="submit" >Search</button>
+            </form>
+        </div>
+    </div>
+</nav>
+
+<div class="row">
+    <div class="card ">
+        <div class="form-group px-15">
+            <label class="form-label" ><h3 class="card-title " style="margin:20px"> BARKOD:</h3></label>
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search for " style="border-color: #a80055">
+                <span class="input-group-append">
+                        <button class="btn btn-outline-secondary me-2" type="button">ARA</button>
+				</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ROW-1 OPEN -->
+<div class="row">
+    <div class="col-md-12 col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title " style="margin:20px">PTS TABLO</h3>
+            </div>
+            <div class="card-body"  >
+                <div class="table-responsive">
+                    <table id="example" class="table table-striped table-bordered text-nowrap w-100" style="border-color: #a80055">
+                        <thead>
+                        <tr>
+                            <th class="wd-15p">ID</th>
+                            <th class="wd-15p">Sipariş NO</th>
+                            <th class="wd-20p">Tarih</th>
+                            <th class="wd-20p">Takip No</th>
+                            <th class="wd-25p">Tekrar</th>
+                            <th class="wd-15p">Yazdır</th>
+                            <th class="wd-10p">Kargo</th>
+                            <th class="wd-20p">Ülke</th>
+                            <th class="wd-15p">Müşteri</th>
+                            <th class="wd-10p">Tutar</th>
+                            <th class="wd-10p">T-Soft</th>
+                            <th class="wd-25p">Not</th>
+                            <th class="wd-25p">ATR</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <form action="dhl.php" method="post" id="TT847143"></form>
+                            <td class="wd-15p">347238643876</td>
+                            <td class="wd-15p">Sipariş NO</td>
+                            <td>18.07.2022 14:22:14</td>
+                            <td class="wd-20p">
+                                <input type="hidden" name="tsid" value="847143">
+                                <input type="hidden" name="ts" value="TS123456789123">
+                                <input class="tsmi" type="text" name="takip" value required>
+                                <select name="firma" class="firma">
+                                    <option name="dhl">dhl</option>
+                                    <option value="aramex">ARAMEX</option>
+                                    <option value="pts">PTS</option>
+                                    <option value="dhl">DHL</option>
+                                    <option value="ups">UPS</option>
+                                </select>
+                                <select name="ih">
+                                    <option value="1">İHRACAT</option>
+                                    <option value="">DEĞİL</option>
+                                </select>
+                                <select name="post_packet">
+                                    <option value="Poşet">Poşet</option>
+                                    <option value="Koli">KOLİ</option>
+                                    <option value="Koli4">KOLİ 4</option>
+                                    <option value="Koli5">KOLİ 5</option>
+                                    <option value="Koli6">KOLİ 6</option>
+                                    <option value="Koli7">KOLİ 7</option>
+                                    <option value="Koli8">KOLİ 8</option>
+                                </select>
+                                <input type="submit" name="degis" value="İşlendi">
+                            </td>
+                            <td class="alert alert-danger">2</td>
+                            <td class="wd-10p"><a href="#fatura" onclick="$.yazdir('TS123456789123')" class="btn btn-primary">Yazdır</a></td>
+                            <td><a href="#fatura" onclick="$.yazdir2('')" class="btn btn-primary">Barkod</a><a href="#fatura" onclick="$.yazdir2('')" class="btn btn-primary">Awb</a></td>
+                            <td class="alert alert-success"></td>
+                            <td class="alert alert-success"></td>
+                            <td class="alert alert-warning">0 </td>
+                            <td><a href="https://www.modaselvim.com/srv/admin/order/order/detail/TS123456789123/1#order-notes" target="_blank" class="btn btn-primary">Tsoft Detay</a></td>
+                            <td><a href="#not" onclick="$.getNotesFromRest('TS123456789123')" class="btn btn-warning">NOTLAR</a></td>
+                            <td>Hayır</td>
+                        </tr>
+                        <tr>
+                            <td class="wd-15p">8734282872894</td>
+                            <td class="wd-15p">Sipariş NO</td>
+                            <td class="wd-20p">Tarih</td>
+                            <td class="wd-20p">Takip No</td>
+                            <td class="wd-15p">Yazdır</td>
+                            <td class="wd-10p">Kargo</td>
+                            <td class="wd-25p">Tekrar</td>
+                            <td class="alert alert-success"></td>
+                            <td class="alert alert-success"></td>
+                            <td class="wd-10p">Tutar</td>
+                            <td class="wd-25p">Not</td>
+                            <td class="wd-10p">T-Soft</td>
+                            <td>Hayır</td>
+
+                        </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+            <!-- TABLE WRAPPER -->
+        </div>
+        <!-- SECTION WRAPPER -->
+    </div>
+</div>
+<!-- ROW-1 CLOSED -->
+
+<!-- ROW OPEN -->
+<div class="row row-cards">
+    <div class="col-lg-12 ">
+
+        <div class="row">
+            <div class="col-md-12 col-lg-6 col-xl-12" >
+                <div class="card">
+                    <div class="card-header" style="border-color: #a80055">
+                        <div class="card-title"><h5>FİLTRELE</h5></div>
+                    </div>
+                    <div class="card-body">
+                        <div class="input-group">
+                            <div class="input-group-text">
+                                <i class="fa fa-calendar"></i>
+                            </div>
+                            <input type="text" class="form-control pull-right" id="reservation">
+                        </div>
+                    </div>
+
+
+
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title"> KARGO</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label class="form-label mt-0">Kargo Seçiniz</label>
+                            <select name="beast" id="select-beast" class="form-control custom-select">
+                                <option value="0">TÜM KARGOLAR</option>
+                                <option value="1">PTS</option>
+                                <option value="2">DHL</option>
+                                <option value="3">PTT</option>
+                                <option value="4">UPS</option>
+                            </select>
+                        </div>
+
+                        <a href="javascript:void(0)" class="btn btn-outline-dark text-white btn-block mt-5" style="background-color:#a80055">Submit</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+<!-- ROW CLOSE -->
+
+<div class="row row-cards">
+    <div class="col-lg-12 ">
+        <div class="row">
+            <div class="col-md-12 col-xl-12" >
+                <div class="card">
+                    <div class="card-header" style="border-color: #a80055">
+                        <div class="card-title"><h5>DATERANGER</h5></div>
+                    </div>
+                    <div class="card-body">
+                        <div class="input-group">
+                            <div class="input-group-text">
+                                <i class="fa fa-calendar"></i>
+                            </div>
+
+                            <input type="text" class="form-control " id="reservation" name="daterange1" value="01/01/2015 1:30 PM - 01/01/2015 2:00 PM" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<div class="row row-cards">
+    <div class="col-lg-12 ">
+        <div class="row">
+            <div class="col-md-12 col-xl-12" >
+                <div class="card">
+                    <div class="card-header" style="border-color: #a80055">
+                        <div class="card-title"><h5>DATERANGER</h5></div>
+                    </div>
+                    <div class="card-body">
+                        <div class="input-group">
+                            <div class="input-group-text">
+                                <i class="fa fa-calendar"></i>
+                            </div>
+
+                            <input type="text" class="form-control " id="reservation" name="birthday" value="01/01/2015 1:30 PM " />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<footer class="footer">
+    <div class="jumbotron" style="background-color: #a80055 ;margin-bottom:0px ;height: 80px">
+        <div class="row align-items-center flex-row-reverse">
+            <div class="col-md-12  col-sm-12  text-center text-white " style="margin-top: 25px">
+                Copyright © 2021 <a href="#">Moda Selvim</a> <a href="#"></a> All rights reserved.
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Internal Js -->
+<script src="assets/js/index1.js"></script>
+<script src="assets/plugins/chart/Chart.bundle.js"></script>
+<script src="assets/plugins/chart/utils.js"></script>
+<script src="assets/plugins/apexcharts/apexcharts.js"></script>
+<script src="assets/plugins/peitychart/jquery.peity.min.js"></script>
+<script src="assets/plugins/peitychart/peitychart.init.js"></script>
+<script src="assets/plugins/echarts/echarts.js"></script>
+
+
+<script src="assets/plugins/datatable/jquery.dataTables.min.js"></script>
+<script src="assets/plugins/datatable/dataTables.bootstrap4.min.js"></script>
+<script src="assets/plugins/datatable/datatable.js"></script>
+<script src="assets/plugins/datatable/dataTables.responsive.min.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+</body>
+</html>
